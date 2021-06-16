@@ -1,3 +1,7 @@
+/*if (process.env.NODE_ENV !== "production") {
+    require('dotenv').config();
+}*/
+
 const express = require('express');
 const app = express();
 const path = require('path');
@@ -18,7 +22,7 @@ const commentRoutes = require('./routes/comments');
 
 const MongoDBStore = require("connect-mongo");
 
-const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/interviewEx';
+const dbUrl = process.env.DB_URL || 'mongodb+srv://abhishek123:abhishek123@interviewex.nkexl.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
 
 mongoose.connect(dbUrl, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true, useFindAndModify: false });
 
