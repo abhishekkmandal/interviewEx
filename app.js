@@ -22,7 +22,11 @@ const commentRoutes = require('./routes/comments');
 
 const MongoDBStore = require("connect-mongo");
 
-const dbUrl = process.env.DB_URL || 'mongodb+srv://abhishek123:abhishek123@interviewex.nkexl.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
+//const dbUrl = process.env.DB_URL || 'mongodb+srv://abhishek123:abhishek123@interviewex.nkexl.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
+//const dbUrl = 'mongodb://localhost:27017/interviewEx';
+//const dbUrl = 'mongodb+srv://abhishek123:abhishek123@cluster0.ctegg.mongodb.net/interviewex?retryWrites=true&w=majority'
+const dbUrl = process.env.DB_URL || 'mongodb+srv://abhishek123:abhishek123@cluster0.ctegg.mongodb.net/interviewex?retryWrites=true&w=majority';
+
 
 mongoose.connect(dbUrl, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true, useFindAndModify: false });
 
