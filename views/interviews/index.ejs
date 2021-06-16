@@ -1,0 +1,43 @@
+<% layout('layouts/boilerplate') %>
+    <h1>All Interviews</h1>
+    <br>
+    <ul>
+        <% for(let interview of interviews){%>
+            <div class="card" mb-3>
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <%=interview.company%>
+                            </h5>
+                            <h5 class="text-muted" class="card-title">
+                                <%=interview.jobtitle%>
+                            </h5>
+                            <p class="card-text">
+                                <%=interview.experience.substring(0,170) %> ....
+                                    <a class="btn btn-secondary btn-sm" href="/interviews/<%=interview._id%>">Read
+                                        More
+                                        <%=interview.title%>
+                                    </a>
+
+                            </p>
+                            <p class="card-text">
+                                <small class="text-muted">
+                                    <%=interview.created.toDateString()%>
+                                </small>
+                            </p>
+                            <a class="btn btn-primary" href="/interviews/<%=interview._id%>">View
+                                <%=interview.title%>
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <% }%>
+                <br>
+                <div>
+                    <a class="btn btn-success" href="/interviews/new">Add Interview</a>
+                </div>
+                <br>
+    </ul>

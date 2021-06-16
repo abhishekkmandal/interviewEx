@@ -1,0 +1,104 @@
+<% layout('layouts/boilerplate') %>
+    <div class="row">
+        <div class="col-6">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <%=interview.company%>
+                    </h5>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item ">
+                        </li>
+                        <li class="list-group-item ">
+                            <strong>Position:</strong>
+                            <%=interview.jobtitle%>
+                        </li>
+                        <li class="list-group-item ">
+                            <strong>Type:</strong>
+                            <%=interview.jobtype%>
+                        </li>
+                        <li class="list-group-item  ">
+                            <strong>Location:</strong>
+                            <%=interview.location%>
+                        </li>
+
+                        <li class="list-group-item ">
+                            <strong>Placement Drive:</strong>
+                            <%=interview.placementdrive%>
+                        </li>
+                        <li class="list-group-item ">
+                            <strong>Created:</strong>
+                            <%=interview.created.toDateString()%>
+                        </li>
+                        <li class="list-group-item ">
+                        </li>
+                    </ul>
+                    <p class="card-text">
+                        <%=interview.experience%>
+                    </p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        Submitted by <strong>
+                            <%=interview.author.uname%>
+                        </strong>
+                    </li>
+                </ul>
+                <% if(currentUser && interview.author.equals(currentUser._id)){ %>
+                    <div class="card-body">
+                        <a href="/interviews/<%=interview._id%>/edit" " class=" card-link btn btn-info">Edit</a>
+                        <form class="d-inline" action="/interviews/<%=interview._id%>?_method=DELETE" method="POST">
+                            <button class="btn btn-danger">Delete</button>
+                        </form>
+                    </div>
+                    <% } %>
+                        <div class="card-footer text-muted">
+                            <a href="/interviews">All Interviews</a>
+                        </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <h2>Comments</h2>
+            <% for(let comment of interview.comments){%>
+                <div class="card">
+                    <div class="card-body">
+                        <h6 class="card-title">
+                            By <%= comment.author.uname %>
+                        </h6>
+                        <p class="card-text">
+                            <%= comment.body %>
+                                <p>
+                                    <% if(currentUser && comment.author.equals(currentUser._id)){ %>
+                                        <form
+                                            action="/interviews/<%=interview._id%>/comments/<%=comment._id%>?_method=DELETE"
+                                            method="POST">
+                                            <button class="btn btn-sm btn-danger">Delete</button>
+                                        </form>
+                                        <%}%>
+                    </div>
+                </div>
+
+                <% }%>
+                    <% if(currentUser){%>
+                        <form action="/interviews/<%=interview._id%>/comments" method="POST" novalidate
+                            class="mb-3 validated-form">
+                            <div class="mb-3">
+                                <label class="form-label" for="body">Ask your doubt</label>
+                                <textarea class="form-control" name="comment[body]" id="body" cols="30" rows="3"
+                                    required></textarea>
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+                            </div>
+                            <button class="btn btn-success">Submit</button>
+                        </form>
+                        <%}else{%>
+                            <div class="alert alert-secondary alert-dismissible fade show" role="alert">
+                                <a href="/login" class="alert-link">Log in!</a> to comment
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                    aria-label="Close"></button>
+                            </div>
+                            <%}%>
+
+        </div>
+    </div>

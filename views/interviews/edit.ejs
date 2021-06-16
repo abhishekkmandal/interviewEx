@@ -1,0 +1,89 @@
+<% layout('layouts/boilerplate') %>
+    <div class="row">
+        <h1 class="text-center">Edit Interview</h1>
+        <div class="col-6 offset-3">
+            <form action="/interviews/<%=interview._id%>?_method=PUT" method="POST" novalidate class="validated-form">
+                <div class="mb-3">
+                    <label class="form-label" for="company">Company</label>
+                    <input class="form-control" type="text" id="company" name=interview[company]
+                        value="<%=interview.company%>" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="jobtitle">Job Title</label>
+                    <input class="form-control" type="text" id="jobtitle" name=interview[jobtitle]
+                        value="<%=interview.jobtitle%>" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="location">Location</label>
+                    <input class="form-control" type="text" id="location" name=interview[location]
+                        value="<%=interview.location%>" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <p>Job Type</p>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name=interview[jobtype] id="intern" value="Intern"
+                            <% if(interview.jobtype==="Intern" ){ %>
+                        checked
+                        <%}%>
+                            required >
+                            <label class="form-check-label" for="intern">
+                                Intern
+                            </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name=interview[jobtype] id="fulltime"
+                            value="Fulltime" <% if(interview.jobtype==="Fulltime" ){ %>
+                        checked
+                        <%}%> required>
+                            <label class="form-check-label" for="fulltime">
+                                Fulltime
+                            </label>
+                    </div>
+
+                </div>
+                <div class="mb-3">
+                    <p>Placement Drive</p>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name=interview[placementdrive] id="oncampus"
+                            value="On-campus" <%if(interview.placementdrive==="On-campus" ){ %>
+                        checked
+                        <%}%>required>
+                            <label class="form-check-label" for="oncampus">
+                                On-campus
+                            </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name=interview[placementdrive] id="offcampus"
+                            value="Off-campus" <%if(interview.placementdrive==="Off-campus" ){ %>
+                        checked
+                        <%}%>required>
+                            <label class="form-check-label" for="offcampus">
+                                Off-campus
+                            </label>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="experience">Experience</label>
+                    <textarea class="form-control" type="text" id="experience" name=interview[experience] rows="10"
+                        required><%=interview.experience%></textarea>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <button class="btn btn-success">Save Interview</button>
+                </div>
+            </form>
+            <a href="/interviews">Back to All Interviews</a>
+        </div>
+    </div>

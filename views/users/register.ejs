@@ -1,0 +1,53 @@
+<% layout('layouts/boilerplate') %>
+    <div class="card">
+        <div class="card-header">
+            <div class="row">
+                <h1 class="text-center">Sign Up</h1>
+                <div class="col-6 offset-3">
+                    <form action="/register" method="POST" novalidate class="validated-form">
+                        <div class="mb-3">
+                            <label class="form-label" for="uname">Name</label>
+                            <input class="form-control" type="text" id="uname" name="uname" required>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="username">Username</label>
+                            <input class="form-control" type="text" id="username" name="username" required>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="email">Email</label>
+                            <input class="form-control" type="text" id="email" name="email" required>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="password">Password</label>
+                            <input class="form-control" type="password" id="password" name="password" required>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                        </div>
+                        <br>
+                        <div class="mb-3">
+                            <button class="btn btn-success">Register</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="text-center" class="card-body">
+            <br>
+            <h5 style="display:inline-block" class="card-title">Already have an account? </h5>
+            <a href="/login" class="btn btn-primary btn-sm">Login</a>
+
+            <br>
+            <br>
+        </div>
+    </div>
