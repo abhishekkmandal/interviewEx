@@ -99,7 +99,7 @@ app.use('/interviews/:id/comments', commentRoutes);
 
 
 app.get('/', (req, res) => {
-    res.render('home');
+    res.redirect('/interviews');
 });
 
 //if we hit some url we dont recognise
